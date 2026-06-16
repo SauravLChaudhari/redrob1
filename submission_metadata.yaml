@@ -1,0 +1,84 @@
+# Redrob Hackathon — Submission Metadata
+# Track 1: Intelligent Candidate Discovery & Ranking
+
+# ============================================================================
+# Team identity
+# ============================================================================
+team_name: "saurav-chaudhari"
+
+primary_contact:
+  name: "Saurav Chaudhari"
+  email: "FILL_ME@example.com"      # <-- add your email before submitting
+  phone: "+91-XXXXXXXXXX"           # <-- add your phone before submitting
+
+team_members:
+  - name: "Saurav Chaudhari"
+    email: "FILL_ME@example.com"
+    role: "Solo / ML Engineer"
+
+# ============================================================================
+# Code and reproducibility
+# ============================================================================
+github_repo: "https://github.com/SauravLChaudhari/redrob1"
+
+sandbox_link: "FILL_ME"             # <-- HuggingFace Space / Streamlit / Colab link (required)
+
+reproduce_command: "python rank.py --candidates ./candidates.jsonl --out ./submission.csv"
+
+# ============================================================================
+# Compute environment (the RANKING step — CPU only, no network)
+# ============================================================================
+compute:
+  platform: "Local machine (CPU)"
+  cpu_cores: 4
+  ram_gb: 16
+  python_version: "3.12"
+  os: "Windows 11 / Ubuntu 22.04"
+  uses_gpu_for_inference: false        # ranking is CPU-only
+  has_network_during_ranking: false    # no API calls during ranking
+  pre_computation_required: false      # TF-IDF semantic layer is computed in-process
+  pre_computation_time_minutes: 0
+  # NOTE: an optional bge-small embedding backend exists (precompute_embeddings.py /
+  # kaggle_redrob_solution.py). If you submit that variant, set
+  # pre_computation_required: true and commit data/*.npy so rank.py reproduces it.
+
+# ============================================================================
+# AI tools declaration (declared use is NOT penalized)
+# ============================================================================
+ai_tools_used:
+  - "Claude"
+
+ai_usage_summary: |
+  Used Claude for architecture discussion, code review, and pair-programming
+  the scoring pipeline. All design decisions, weight tuning, and manual
+  validation of the top-ranked candidates were done by the author. No candidate
+  data was sent to any hosted LLM; all ranking runs locally and offline.
+
+# ============================================================================
+# Approach summary
+# ============================================================================
+methodology_summary: |
+  Transparent hybrid scoring (no training — the data is unlabeled). The JD is
+  encoded as weighted requirements. Per candidate: title fit (sets a ceiling so
+  a non-technical title cannot be rescued by a stuffed skill list),
+  trust-weighted skill relevance (claimed proficiency discounted by assessment
+  scores, endorsements and duration to defeat keyword stuffers), semantic
+  similarity to the JD (in-process TF-IDF; optional bge-small embeddings),
+  experience curve peaking at 6-8 yrs, location (relocation + work-mode), and
+  notice period. These are gated by multiplicative penalties (CV/speech-only
+  domain mismatch, services-only career, framework-only LLM exposure,
+  job-hopping, a small big-tech nudge) and a behavioral availability modifier
+  built from ~18 of the 23 Redrob signals. Honeypots are sunk via profile
+  consistency checks (0% in the top 100). Scores are intentionally unsaturated
+  so the top-10 ordering is meaningful. Runs in ~1 min for 100K candidates on
+  CPU with no network.
+
+# ============================================================================
+# Declarations
+# ============================================================================
+declarations:
+  read_submission_spec: true
+  code_is_original_work: true
+  no_collusion: true
+  honeypot_check_done: true
+  reproduction_tested: true

@@ -1,0 +1,5 @@
+numpy>=1.24
+scikit-learn>=1.3
+# Optional — only needed to (re)generate embeddings via precompute_embeddings.py.
+# The ranking step itself does not import this.
+# sentence-transformers>=2.2
