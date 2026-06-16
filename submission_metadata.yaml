@@ -21,7 +21,7 @@ team_members:
 # ============================================================================
 github_repo: "https://github.com/SauravLChaudhari/redrob1"
 
-sandbox_link: "FILL_ME"             # <-- HuggingFace Space / Streamlit / Colab link (required)
+sandbox_link: "https://huggingface.co/spaces/sauravlchaudhari/redrob-ranker"             # <-- HuggingFace Space / Streamlit / Colab link (required)
 
 reproduce_command: "python rank.py --candidates ./candidates.jsonl --out ./submission.csv"
 
