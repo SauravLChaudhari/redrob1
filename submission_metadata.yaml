@@ -8,12 +8,12 @@ team_name: "saurav-chaudhari"
 
 primary_contact:
   name: "Saurav Chaudhari"
-  email: "FILL_ME@example.com"      # <-- add your email before submitting
-  phone: "+91-XXXXXXXXXX"           # <-- add your phone before submitting
+  email: "sauravchaudhary319@gmail.com"     
+  phone: "+91-9158577661"           
 
 team_members:
   - name: "Saurav Chaudhari"
-    email: "FILL_ME@example.com"
+    email: "sauravchaudhary319@gmail.com"
     role: "Solo / ML Engineer"
 
 # ============================================================================
